@@ -1,8 +1,13 @@
 import api from "../api";
 
-const getNowPlayingMovies = async () => {
+const getNowPlayingMovies = async (page=1) => {
     try {
-        const res = await api.get("/movie/now_playing?language=en-US");
+        const res = await api.get("/movie/now_playing", {
+            params: {
+                language: "en-US",
+                page: page,
+            },
+        });
         return res.data;
     }
     catch(e) {

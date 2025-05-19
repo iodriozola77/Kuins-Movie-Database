@@ -3,56 +3,51 @@
 import MovieCardCarrousel from '@/components/MovieCardCarrousel/MovieCardCarrousel';
 import { useState, useEffect } from 'react';
 import { Movie } from '@/types/Movie';
-import getPopularMovies from '@/services/movies/getPopularMovies';
-import getTopRatedMovies from '@/services/movies/getTopRatedMovies';
-import getNowPlayingMovies from '@/services/movies/getNowPlayingMovies';
-import { useGuestSession } from '@/providers/GetSessionContext';
-import { getFavorites } from '@/services/accounts/getFavorites';
+import getDayTrendingMovies from '@/services/movies/getDayTrendingMovies';
+import getWeekTrendingMovies from '@/services/movies/getWeekTrendingMovies';
+import getUpcomingMovies from '@/services/movies/getUpcomingMovies';
 
 const Home = () => {
 
-    const { guestSessionId } = useGuestSession();
-
-    const [popularMovies, setPopularMovies] = useState<Movie[]>([]);
-    const [topRatedMovies, setTopRatedMovies] = useState<Movie[]>([]);
-    const [nowPlayingMovies, setNowPlayingMovies] = useState<Movie[]>([]);
-    const [favoriteMovies, setFavoriteMovies] = useState<Movie[]>([]);
+    const [dayTrendingMovies, setDayTrendingMovies] = useState<Movie[]>([]);
+    const [weekTrendingMovies, setWeekTrendingMovies] = useState<Movie[]>([]);
+    const [upcomingMovies, setUpcomingMovies] = useState<Movie[]>([]);
 
     useEffect(() => {
-        const fetchPopularMovies = async () => {
+        const fetchDayTrendingMovies = async () => {
             try {
-                const data = await getPopularMovies();
-                setPopularMovies(data.results);
+                const data = await getDayTrendingMovies();
+                setDayTrendingMovies(data.results);
             }
             catch (e) {
                 console.error("Couldn't load movies: ", e);
             }
         };
 
-        fetchPopularMovies();
+        fetchDayTrendingMovies();
 
     }, []);
 
     useEffect(() => {
-        const fetchTopRatedMovies = async () => {
+        const fetchWeekTrendingMovies = async () => {
             try {
-                const data = await getTopRatedMovies();
-                setTopRatedMovies(data.results);
+                const data = await getWeekTrendingMovies();
+                setWeekTrendingMovies(data.results);
             }
             catch (e) {
                 console.error("Couldn't load movies: ", e);
             }
         };
 
-        fetchTopRatedMovies();
+        fetchWeekTrendingMovies();
 
     }, []);
 
     useEffect(() => {
-        const fetchNowPlayingMovies = async () => {
+        const fetchUpcomingMovies = async () => {
             try {
-                const data = await getNowPlayingMovies();
-                setNowPlayingMovies(data.results);
+                const data = await getUpcomingMovies();
+                setUpcomingMovies(data.results);
             }
             catch(e) {
                 console.error("Couldn't load movies: ", e)
@@ -60,55 +55,23 @@ const Home = () => {
             }
         };
 
-        fetchNowPlayingMovies();
+        fetchUpcomingMovies();
 
     }, []);
-
-    useEffect(() => {
-            const fetchFavorites = async () => {
-            if (!guestSessionId) return;
-    
-            try {
-                const data = await getFavorites(guestSessionId);
-                setFavoriteMovies(data?.results || []);
-            }
-            catch (e) {
-                console.error("Error loading favorite movies:", e);
-            }
-            };
-    
-            fetchFavorites();
-    
-    }, [guestSessionId]);
 
     return (
         <div className="bg-gray-800 min-h-[calc(100vh-7rem)]">
             <div>
-                <h2 className="pl-7 pt-6 text-3xl font-bold">Popular Movies</h2>
-                <MovieCardCarrousel movies={popularMovies}/>
+                <h2 className="pl-7 pt-6 text-3xl font-bold">Trending Today</h2>
+                <MovieCardCarrousel movies={dayTrendingMovies}/>
             </div>
             <div>
-                <h2 className="pl-7 py-6 text-3xl font-bold">Top Rated Movies</h2>
-                <MovieCardCarrousel movies={topRatedMovies}/>
-            </div>
-            <div>
-                <h2 className="pl-7 py-6 text-3xl font-bold">Now Playing Movies</h2>
-                <MovieCardCarrousel movies={nowPlayingMovies}/>
+                <h2 className="pl-7 py-6 text-3xl font-bold">Trending This Week</h2>
+                <MovieCardCarrousel movies={weekTrendingMovies}/>
             </div>
             <div className='pb-8'>
-                <h2 className="pl-7 py-6 text-3xl font-bold">My Favorite Movies</h2>
-                    {favoriteMovies.length === 0 ? 
-                (
-                    <div className="text-center mt-10 text-gray-400">
-                        <p className="text-xl">You don&apos;t have any favorite movies yet.</p>
-                        <p className="text-sm mt-2 pb-18">
-                            Go to a movie&apos;s detail page and click &quot;Add to Favorites&quot; to see it here.
-                        </p>
-                    </div>
-                ) : (
-                    <MovieCardCarrousel movies={favoriteMovies}/>
-                )
-            }
+                <h2 className="pl-7 py-6 text-3xl font-bold">Upcoming</h2>
+                <MovieCardCarrousel movies={upcomingMovies}/>
             </div>
         </div>
     );

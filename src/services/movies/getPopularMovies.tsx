@@ -1,8 +1,13 @@
 import api from "../api";
 
-const getPopularMovies = async() => {
+const getPopularMovies = async(page=1) => {
     try {
-        const res = await api.get("/movie/popular?language=en-US");
+        const res = await api.get("/movie/popular", {
+            params: {
+                language: "en-US",
+                page: page,
+            },
+        });
         return res.data;
     }
     catch(e) {

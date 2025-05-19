@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
+import Image from "next/image";
 
 const pages = [
     {href: "/popular", label: "Popular Movies"},
@@ -17,8 +18,9 @@ const Header = () => {
     return (
         <header className="w-full bg-black">
             <div className="flex h-28 items-center justify-between bg-black">
-                <Link href={"/"} className="text-white text-center pl-6"
-                style={{ fontFamily: "var(--font-codystar)", fontSize:"xxx-large"}}>
+                <Link href={"/"} className="text-white text-center pl-6 flex items-center"
+                style={{ fontFamily: "var(--font-codystar)", fontSize:"1.75rem"}}>
+                    <Image src="/favicon.ico" alt="Logo" width={40} height={40} className="pr-6 w-[10vh] h-auto"></Image>
                     Kuin&apos;s Movie Database
                 </Link>
 

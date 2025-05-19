@@ -146,7 +146,17 @@ const MovieDetailPage = () => {
             </div>
             <div className="overflow-hidden px-4 pb-6 pt-8">
                     <h2 className="pl-7 pb-1 text-2xl font-bold">Recommended Movies</h2>
-                    <MovieCardCarrousel movies={recommendedMovies}/>
+                    {recommendedMovies.length === 0 ? 
+                        (
+                            <div className="text-center mt-10 text-gray-400 pb-6">
+                                <p className="text-xl">There aren&apos;t any recommended movies.</p>
+                            </div>
+                        ) : (     
+                            <div className="">
+                                <MovieCardCarrousel movies={recommendedMovies}/>
+                            </div>
+                        )
+                    }
             </div>
         </div>
         

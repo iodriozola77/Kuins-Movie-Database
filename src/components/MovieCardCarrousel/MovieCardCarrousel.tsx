@@ -6,18 +6,23 @@ import Link from "next/link";
 import MovieCard from "../MovieCard/MovieCard";
 import { Movie } from "@/types/Movie";
 import { useRef } from "react";
+import { useMediaQuery } from "react-responsive";
 
 interface MovieCardCarrouselInterface {
     movies: Movie[];
 }
 
 const MovieCardCarrousel: React.FC<MovieCardCarrouselInterface> = ({ movies }) => {
+
     const sliderRef = useRef<HTMLDivElement | null>(null);
+
+    const isMobile = useMediaQuery({ maxWidth: 767 });
+
     const [sliderInstanceRef, slider] = useKeenSlider<HTMLDivElement>({
         loop: true,
         drag: true,
         slides: {
-            perView: 5,
+            perView: isMobile ? 2 : 5,
             spacing: 5,
         }
     });
@@ -43,7 +48,7 @@ const MovieCardCarrousel: React.FC<MovieCardCarrouselInterface> = ({ movies }) =
                             score={parseFloat((movie.vote_average * 10).toFixed(1))}
                             photoPath={movie.poster_path}
                             year={new Date(movie.release_date).getFullYear()}
-                            size="small"
+                            size={isMobile ? "xsmall" : "small"}
                         />
                     </Link>
                 </div>

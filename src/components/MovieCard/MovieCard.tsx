@@ -8,7 +8,7 @@ interface MovieCardInterface {
     score: number;
     photoPath: string;
     year: number;
-    size?: "default" | "small";
+    size?: "default" | "small" | "xsmall";
 }
 
 const MovieCard: React.FC<MovieCardInterface> = ({
@@ -41,6 +41,27 @@ const MovieCard: React.FC<MovieCardInterface> = ({
             </div>
         );
     }
+
+    if(size === "xsmall") {
+        return (
+            <div className="items-center flex flex-col justify-center rounded-3xl h-90 shadow-sm group border-2 border-emerald-500 hover:-translate-y-1 bg-black text-gray-100 font-sans mb-5 mx-1 w-45">
+                <Image 
+                src={photo}
+                width="190"
+                height="160"
+                
+                alt={title}
+                className="object-cover pt-6 px-6"
+                />
+                <p className="pt-3 pb-1.5 group-hover:font-bold text-sm text-center w-[90%]">{title}</p>
+                <p className="pb-4 text-xs">({year})</p>
+                <div className="w-[80%]">
+                    <ScoreBar value={score}/>
+                </div>
+                <div className="pb-6"/>
+            </div>
+        );
+    }  
 
     return (
         <div className="items-center flex flex-col justify-center rounded-3xl h-140 shadow-sm group border-2 border-emerald-500 hover:-translate-y-1 bg-black text-gray-100 font-sans mb-5 mx-2.5">

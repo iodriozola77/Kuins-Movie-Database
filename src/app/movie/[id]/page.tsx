@@ -110,7 +110,7 @@ const MovieDetailPage = () => {
                     alt={movie.title}
                     className="object-cover px-10 w-auto h-[60vh]"
                 />
-                <div>
+                <div className="min-w-[70%] max-w-[70%]">
                     <div className="w-[90%] flex items-center pb-6">
                         <h1 className="pr-3 text-3xl font-bold">{movie.title}</h1>
                         <div
@@ -121,18 +121,18 @@ const MovieDetailPage = () => {
                             {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
                         </div>
                     </div>
-                    <div className="pb-2">
+                    <div className="pb-2 w-[90%]">
                         <strong>Genres:</strong>{" "}
                         {movie.genres.map((genre) => genre.name).join(", ")}
                     </div>
-                    <div className="pb-2">
+                    <div className="pb-2 w-[90%]">
                         <strong>Original Language:</strong> {movie.original_language.toUpperCase()}
                     </div>
-                    <div className="pb-2">
+                    <div className="pb-2 w-[90%]">
                         <strong>Spoken Languages:</strong>{" "}
                         {movie.spoken_languages.map((lang) => lang.english_name).join(", ")}
                     </div>
-                    <div className="pb-6">
+                    <div className="pb-6 w-[90%]">
                         <strong>Production Companies:</strong>{" "}
                         {movie.production_companies.map((comp) => comp.name).join(", ")}
                     </div>

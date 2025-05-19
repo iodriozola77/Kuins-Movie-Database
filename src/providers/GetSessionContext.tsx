@@ -38,6 +38,7 @@ export const GuestSessionProvider = ({ children }: { children: React.ReactNode }
         }
         else {
             fetchGuestSession();
+            // eslint-disable-next-line react-hooks/exhaustive-deps
         }
     }, []);
 

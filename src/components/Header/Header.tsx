@@ -19,7 +19,7 @@ const Header = () => {
             <div className="flex h-28 items-center justify-between bg-black">
                 <Link href={"/"} className="text-white text-center pl-6"
                 style={{ fontFamily: "var(--font-codystar)", fontSize:"xxx-large"}}>
-                    Kuin's Movie Database
+                    Kuin&apos;s Movie Database
                 </Link>
 
                 <nav className="flex pr-6">

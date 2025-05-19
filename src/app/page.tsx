@@ -100,9 +100,9 @@ const Home = () => {
                     {favoriteMovies.length === 0 ? 
                 (
                     <div className="text-center mt-10 text-gray-400">
-                        <p className="text-xl">You don't have any favorite movies yet.</p>
+                        <p className="text-xl">You don&apos;t have any favorite movies yet.</p>
                         <p className="text-sm mt-2 pb-18">
-                            Go to a movie's detail page and click "Add to Favorites" to see it here.
+                            Go to a movie&apos;s detail page and click &quot;Add to Favorites&quot; to see it here.
                         </p>
                     </div>
                 ) : (

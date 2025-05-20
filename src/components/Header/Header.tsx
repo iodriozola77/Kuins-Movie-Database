@@ -16,7 +16,7 @@ const pages = [
 const Header = () => {
     const pathname = usePathname();
 
-    const isMobile = useMediaQuery({ maxWidth: 767 });
+    const isMobile = useMediaQuery({ maxWidth: 720 });
 
     if(isMobile) {
         return (

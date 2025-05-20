@@ -20,7 +20,7 @@ const Header = () => {
 
     if(isMobile) {
         return (
-            <header className="w-full bg-black pb-3">
+            <header className="w-full bg-black">
                 <div className="h-28 items-center justify-between bg-black pb-5">
                     <Link href={"/"} className="text-white text-center pl-6 flex items-center pt-3"
                     style={{ fontFamily: "var(--font-codystar)", fontSize:"1.5rem"}}>
@@ -36,7 +36,7 @@ const Header = () => {
                         ))}
                     </nav>
                 </div>
-                <div className="pb-3"></div>
+                <div className="pb-5"></div>
             </header>
         );
     }

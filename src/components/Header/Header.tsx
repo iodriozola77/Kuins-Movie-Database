@@ -16,7 +16,7 @@ const pages = [
 const Header = () => {
     const pathname = usePathname();
 
-    const isMobile = useMediaQuery({ maxWidth: 720 });
+    const isMobile = useMediaQuery({ maxWidth: 500 });
 
     if(isMobile) {
         return (
@@ -36,6 +36,7 @@ const Header = () => {
                         ))}
                     </nav>
                 </div>
+                <div className="pb-3"></div>
             </header>
         );
     }

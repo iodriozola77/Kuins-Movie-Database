@@ -116,7 +116,7 @@ const MovieDetailPage = () => {
                     />
                     <div className="min-w-[90%] max-w-[90%] pt-6 pl-12.5">
                         <div className="w-[100%] items-center pb-6">
-                            <h1 className=" pb-5 text-2xl font-bold">{movie.title}</h1>
+                            <h1 className=" pb-5 text-2xl font-bold text-white">{movie.title}</h1>
                             <div
                                 onClick={handleToggleFavorite}
                                 className="rounded-xl border border-emerald-500 hover:-translate-y-0.5 text-emerald-500 
@@ -125,30 +125,30 @@ const MovieDetailPage = () => {
                                 {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
                             </div>
                         </div>
-                        <div className="pb-2 w-[100%]">
+                        <div className="pb-2 w-[100%] text-white">
                             <strong>Genres:</strong>{" "}
                             {movie.genres.map((genre) => genre.name).join(", ")}
                         </div>
-                        <div className="pb-2 w-[100%]">
+                        <div className="pb-2 w-[100%] text-white">
                             <strong>Original Language:</strong> {movie.original_language.toUpperCase()}
                         </div>
-                        <div className="pb-2 w-[100%]">
+                        <div className="pb-2 w-[100%] text-white">
                             <strong>Spoken Languages:</strong>{" "}
                             {movie.spoken_languages.map((lang) => lang.english_name).join(", ")}
                         </div>
-                        <div className="pb-6 w-[100%]">
+                        <div className="pb-6 w-[100%] text-white">
                             <strong>Production Companies:</strong>{" "}
                             {movie.production_companies.map((comp) => comp.name).join(", ")}
                         </div>
-                        <strong className="">Overview</strong>
-                        <p className="w-[100%] pt-2">{movie.overview}</p>
+                        <strong className="text-white">Overview</strong>
+                        <p className="w-[100%] pt-2 text-white">{movie.overview}</p>
                         <div className="flex pt-11 w-[100%]">
                             <ScoreBar value={parseFloat((movie.vote_average * 10).toFixed(1))}/>
                         </div>
                         <div className="w-[100%] pt-8 space-y-2 text-white text-sm"></div>
                     </div>
                 </div>
-                <div className="overflow-hidden px-2 pb-6 pt-8">
+                <div className="overflow-hidden px-1 pb-6 pt-8">
                         <h2 className="pl-7 pb-1 text-2xl font-bold">Recommended Movies</h2>
                         {recommendedMovies.length === 0 ? 
                             (

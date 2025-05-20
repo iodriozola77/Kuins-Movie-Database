@@ -7,6 +7,7 @@ import MovieCard from "../MovieCard/MovieCard";
 import { Movie } from "@/types/Movie";
 import { useRef } from "react";
 import { useMediaQuery } from "react-responsive";
+import { IoMdArrowDropleft , IoMdArrowDropright } from "react-icons/io";
 
 interface MovieCardCarrouselInterface {
     movies: Movie[];
@@ -23,7 +24,7 @@ const MovieCardCarrousel: React.FC<MovieCardCarrouselInterface> = ({ movies }) =
         drag: true,
         slides: {
             perView: isMobile ? 2 : 5,
-            spacing: 5,
+            spacing: isMobile ? 2 : 5,
         }
     });
 
@@ -59,13 +60,13 @@ const MovieCardCarrousel: React.FC<MovieCardCarrouselInterface> = ({ movies }) =
                 onClick={() => slider.current?.prev()}
                 className="absolute top-1/2 left-0 transform -translate-y-1/2 text-white bg-black/50 px-3 py-2 rounded-l hover:bg-black"
             >
-                ◀
+                <IoMdArrowDropleft/>
             </button>
             <button
                 onClick={() => slider.current?.next()}
                 className="absolute top-1/2 right-0 transform -translate-y-1/2 text-white bg-black/50 px-3 py-2 rounded-r hover:bg-black"
             >
-                ▶
+                <IoMdArrowDropright/>
             </button>
         </div>
   );
